@@ -1,0 +1,50 @@
+<ion-view view-title="Sims Available">
+  <ion-content class="padding">
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="search" ng-model="searcher.value" ng-change="textChanged()">
+      </label>
+      <button class="button button-clear ion-android-cancel" ng-click="clearSearch()">
+      </button>
+    </div>
+    <div class="button-bar">
+      <a class="button" ng-click="filter(0)">All</a>
+      <a class="button button-balanced" ng-click="filter(1)">Payed</a>
+      <a class="button button-assertive" ng-click="filter(2)">Expired</a>
+      <a class="button button-energized" ng-click="filter(3)">Free</a>
+    </div>
+    <div class='list'>
+      <div class='item item-icon-right low' ng-repeat="item in sims">
+        <div class='row'>
+          <div class='col-40'>
+            <h3>{{item.id}}</h3>
+          </div>
+          <div class='col-50' ng-switch="chooseOption(item)">
+            <div ng-switch-when="1">
+              <!-- code to render a large video block-->
+              <button class="button button-small button-assertive" ng-click="makePayable(item.id, $index)">
+                Expired
+              </button>
+            </div>
+            <div  ng-switch-when="-2">
+              <!-- code to render a large video block-->
+              <button class="button button-small button-energized icon-right ion-ios-cart" ng-click="pay(item.id, $index)">
+                Pay Now
+              </button>
+            </div>
+            <div  ng-switch-when="-3">
+              <!-- code to render the regular video block -->
+              <button class="button button-small button-balanced">Till: {{item.payedUntil}}</button>
+            </div>
+          </div>
+          <div class='col-10'>
+            <a class="button button-small button-stable" href='#/tab/edit/{{item}}'><i
+              class="icon ion-chevron-right icon-accessory"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    Total SIMs: {{len}}
+  </ion-content>
+</ion-view>

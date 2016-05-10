@@ -1,0 +1,50 @@
+<ion-view view-title="Edit Sim">
+  <ion-content class="padding">
+    {{payedFrom}}
+    <div class="list">
+      <label class="item item-input row-balanced">
+        <span class="input-label ">SIM</span>
+        <span type="text" ng-model="sim">{{sim}}</span>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Program</span>
+        <input type="text" ng-model="prog" ng-change="textChanged()">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">From Date</span>
+        <input type="text"  ng-model="payedFrom" ng-change="textChanged()">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Untill Date</span>
+        <input type="text" placeholder="{{payedUntil}}" ng-model="payedUntil" ng-change="textChanged()">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">End Deal</span>
+        <button class="button  button-outline button-energized" ng-click='resetDates()'>
+          <i class="icon ion-ios-timer"></i>
+        </button>
+      </label>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="button button-large button-balanced icon-right ion-ios-cart"
+                ng-click='save(sim, prog, payedFrom, payedUntil)' ng-disabled='isFormDisabled()'>
+          Save2
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-large button-dark" ng-disabled='isFormDisabled()' ng-click=''>Cancel</button>
+      </div>
+    </div>
+
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label ">Delete SIM</span>
+        <button class="button " ng-click='deleteSIM(sim)'>
+          <i class="icon ion-trash-a"></i>
+        </button>
+      </label>
+    </div>
+  </ion-content>
+</ion-view>

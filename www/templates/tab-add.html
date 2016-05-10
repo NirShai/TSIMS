@@ -1,0 +1,73 @@
+<ion-view view-title="Add New Sim">
+  <ion-content>
+    <ng-form name="form">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">SIM Id</span>
+          <input type="text" ng-model="sim.value" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Program</span>
+          <input type="text" ng-model="prog.value" ng-change="typeChanged(prog.value)">
+        </label>
+      </div>
+
+      <div class="row">
+        <div class="col-10">
+        </div>
+        <div class="col">
+          <button class="button button-large button-balanced" ng-click='save(sim.value, prog.value)'
+                  ng-disabled='isFormDisabled()'>
+            Save
+          </button>
+        </div>
+        <div class="col">
+          <button class="button button-large button-dark" ng-click='reset()' ng-disabled='isFormDisabled()'>Reset
+          </button>
+        </div>
+      </div>
+
+    </ng-form>
+
+    <label class="item item-input">
+      <span class="input-label">Status:</span>
+      <span>{{status}}</span>
+    </label>
+
+    <div ng-if="donkey">
+
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label ">1.</span>
+          <button class="button button-balanced" ng-click='deleteSims()'>Delete DB</button>
+        </label>
+        <label class="item item-input">
+          <span class="input-label ">2.</span>
+          <button class="button button-balanced" ng-click='info()'>Info</button>
+        </label>
+        <label class="item item-input">
+          <span class="input-label ">3.</span>
+          <button class="button button-balanced" ng-click='info()'>Log</button>
+        </label>
+        <label class="item item-input">
+          <span class="input-label ">Status</span>
+          <label class="" ng-click='statusClicked()'>{{statusx}}</label>
+        </label>
+        <label class="item item-input" ng-show="fullPath">
+          <span class="input-label ">Full Path</span>
+          <label class="">{{fullPath}}</label>
+        </label>
+        <label class="item item-input" ng-show="log">
+          <ul>
+            <li ng-repeat="item in log">
+             <p>{{item.msg}}</p>
+            </li>
+          </ul>
+        </label>
+      </div>
+    </div>
+
+    </div>
+
+  </ion-content>
+</ion-view>
